@@ -10,8 +10,8 @@ class Data:
         self.time = ""  # - HH:MM:SS Часы:минуты:секунды
         self.zhq = ""  # - десятые сотые тысячные
         self.GG = ""  # - номер группы
-        if raw.endswith("\r"):
-            self.raw = raw.strip('\r')
+        if raw.endswith("\r") or raw.endswith("\r\n"):
+            self.raw = raw.strip("\r\n")
             self.valid_r = True
         else:
             self.raw = raw

@@ -20,25 +20,25 @@ class MyBaseRequestHandler(StreamRequestHandler):
         self.server.users[self.addr[1]] = self.request
         message = f"IP {self.addr[0]}:{self.addr[1]} Connected..."
         logger.info(message)
-
-        try:
-            raw = self.request.recv(1024).decode('UTF-8', 'ignore')
-            if raw:
-                data = Data(raw)
-                if data.parser():
-                    if data.GG == '00':
-                        print(data)
-                    with open(settings.data_filename, "a", encoding="utf-8") as file:
-                        print(data.raw, file=file)
-                    back_data = ("OK\n").encode("utf-8")
-                else:
-                    back_data = (f"KO\n{data.to_log()}\n").encode("utf-8")
-                logger.info(f'receive from {self.client_address}')
-                logger.info(data.to_log())
-                self.request.sendall(back_data)
-            self.request.close()
-        except Exception as e:
-            logger.info(e)
+        while True:
+            try:
+                raw = self.request.recv(1024).decode('UTF-8', 'ignore')
+                if raw:
+                    data = Data(raw)
+                    if data.parser():
+                        if data.GG == '00':
+                            print(data)
+                        with open(settings.data_filename, "a", encoding="utf-8") as file:
+                            print(data.raw, file=file)
+                        back_data = ("OK\n").encode("utf-8")
+                    else:
+                        back_data = (f"KO\n{data.to_log()}\n").encode("utf-8")
+                    logger.info(f'receive from {self.client_address}')
+                    logger.info(data.to_log())
+                    self.request.sendall(back_data)
+            except Exception as e:
+                logger.info(e)
+                self.request.close()
 
 # Исходный код: класс ThreadingTCPServer (ThreadingMixIn, TCPServer): проход
 # Наследуется от ThreadingMixIn и TCPServer для достижения многопоточности

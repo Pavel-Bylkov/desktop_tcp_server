@@ -149,7 +149,7 @@ class MainWindow(QMainWindow):
         self.p = ProcessRunnable(target=tcp_main)
         self.p.start()
         self.timer.start(1000)
-        print('Server start!')
+        # print('Server start!')
 
 
 def main():
