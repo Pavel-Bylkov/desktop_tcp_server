@@ -4,7 +4,7 @@ import platform
 # from socketserver import TCPServer, BaseRequestHandler, ThreadingTCPServer
 from socketserver import TCPServer, StreamRequestHandler, ThreadingMixIn
 
-from data_parser import Data
+from src.data_parser import Data
 import logging
 import logging.config
 import settings

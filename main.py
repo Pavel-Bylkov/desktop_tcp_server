@@ -15,7 +15,7 @@ from PyQt5.QtCore import QObject, QTimer, QRunnable, QThreadPool, pyqtSlot
 from PyQt5.QtCore import pyqtSignal as Signal
 from PyQt5.QtGui import QTextCursor
 
-from tcp_server import main as tcp_main, stop_server
+from src.tcp_server import main as tcp_main, stop_server
 
 
 class ProcessRunnable(QRunnable):

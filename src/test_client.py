@@ -1,5 +1,5 @@
 import socket
-from settings import server_addr, server_port
+from ..settings import server_addr, server_port
 
 # Создать сокет клиента
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -2,7 +2,6 @@ import subprocess
 import threading
 import time
 import queue
-import os
 
 
 def output_reader(proc, outq):
